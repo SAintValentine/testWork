@@ -73,8 +73,8 @@ data.pivot_table('sender_id', 'platform_id', 'version', 'count').plot(ax=axes[1]
 
 data.pivot_table('sender_id', 'reg_date', 'version', 'count').plot(title='A/B Test Reg.Day Bar Graph')
 
-maskGenderF = data['gender'] == 'm' # посмотрим поведение пользователей, обьедененных платформой и гендером
-maskGenderM = data['gender'] == 'f'
+maskGenderF = data['gender'] == 'f' # посмотрим поведение пользователей, обьедененных платформой и гендером
+maskGenderM = data['gender'] == 'm'
 dataM = data.loc[maskGenderM]
 dataF = data.loc[maskGenderF]
 
@@ -96,5 +96,3 @@ for index, row in data.iterrows():
         numTest += 1
 print('На ', numBasic / numTest * 100 - 100, '% по количеству лайков базовый вариант лучше тестового.') # выведено сравнение по лайкам, остальные
                                                                         # данные будут отображены и обьяснены графиками как просилось в задании
-
-
