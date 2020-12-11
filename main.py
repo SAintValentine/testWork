@@ -13,7 +13,7 @@ data['day'] = data.apply(fD, axis=1)
 data.pivot_table( 'sender_id', 'day', 'gender', 'count').plot(kind='bar', stacked=True,
                                                    title='A/B Test Bar Graph')
 plt.show()
-del data['day']
+data.drop('day', axis=1, inplace=True)
 
 
 def fV(row): # добавляем столбец, отвечающий за версию (basic / test)
@@ -46,7 +46,7 @@ data24 = data24.loc[start:end]
 data = pd.concat([data.reset_index(drop=True), data24.reset_index(drop=True)]) # так как было разделено 24 и 25-26 числа
                                                 # то сейчас нужно их соеденить обратно, чтобы получить уже итоговый
                                                 # промежуток теста
-del data['datetime']
+data.drop('datetime', axis=1, inplace=True)
 
 
 def fD(row): # функция для создания поля 'День', чтобы не замусоривать графики
