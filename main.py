@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import datetime as dt
 
-data = pd.read_csv('Test_4.csv', ";")
+data = pd.read_csv('Test_4.csv', ';')
 
 def fD(row): # смотрели на общее поведение пользователей по дням
     return row['time_stamp'][:2]
@@ -49,7 +49,7 @@ data = pd.concat([data.reset_index(drop=True), data24.reset_index(drop=True)]) #
 del data['datetime']
 
 
-def fD(row): # функция для создания поля "День", чтобы не замусоривать графики
+def fD(row): # функция для создания поля 'День', чтобы не замусоривать графики
     return row['time_stamp'][:2]
 
 
@@ -73,8 +73,8 @@ data.pivot_table('sender_id', 'platform_id', 'version', 'count').plot(ax=axes[1]
 
 data.pivot_table('sender_id', 'reg_date', 'version', 'count').plot(title='A/B Test Reg.Day Bar Graph')
 
-maskGenderF = data['gender'] == "m" # посмотрим поведение пользователей, обьедененных платформой и гендером
-maskGenderM = data['gender'] == "f"
+maskGenderF = data['gender'] == 'm' # посмотрим поведение пользователей, обьедененных платформой и гендером
+maskGenderM = data['gender'] == 'f'
 dataM = data.loc[maskGenderM]
 dataF = data.loc[maskGenderF]
 
@@ -90,11 +90,11 @@ plt.show()
 numBasic = 0 # подсчет результатов по группам
 numTest = 0
 for index, row in data.iterrows():
-    if row['version'] == "basic":
+    if row['version'] == 'basic':
         numBasic += 1
     else:
         numTest += 1
-print("На ", numBasic / numTest * 100 - 100, "% по количеству лайков базовый вариант лучше тестового.") # выведено сравнение по лайкам, остальные
+print('На ', numBasic / numTest * 100 - 100, '% по количеству лайков базовый вариант лучше тестового.') # выведено сравнение по лайкам, остальные
                                                                         # данные будут отображены и обьяснены графиками как просилось в задании
 
 
